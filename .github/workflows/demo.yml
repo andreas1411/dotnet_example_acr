@@ -12,20 +12,11 @@ jobs:
       - run: echo "siguiente" > archivo.txt
       - run: sleep 5
 
-  example_job2:
-    needs: example_job
-    runs-on: ubuntu-20.04
+  example_job2:   
+    runs-on: ubuntu-latest
     steps:
-      - run: echo "hola workflow desde job 2"
-      - run: echo "d"
-      - name: condicion
-        if: runner.os == 'Windows'
-        run: echo "e"
-
-  example_fail:
-    if: ${{ always() }}
-    needs: example_job2
-    runs-on: ubuntu-20.04
-    steps:
-      - run: echo "hola workflow desde job 2"
+      - run: cat archivo.txt
+      - run: echo "hola workflow desde job 2"      
       - run: echo "Final"
+
+ 
